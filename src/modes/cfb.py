@@ -1,7 +1,5 @@
 from ..cipher.cipher import BLOCK_SIZE, encrypt_block, decrypt_block
-from ..utils.padding import pkcs7_pad, pkcs7_unpad
 from ..utils.bit_operation import xor_blocks
-
 
 def encrypt_cfb(plaintext: bytes, key: bytes, iv: bytes) -> bytes:
     if len(iv) != BLOCK_SIZE:
@@ -40,6 +38,8 @@ def decrypt_cfb(ciphertext: bytes, key: bytes, iv: bytes) -> bytes:
 
 
 if __name__ == "__main__":
+    # NOTE:(to self). From root, do python -m src.modes.cfb
+
     key = b"KeyYoisakiKanade"
     iv = b"FEDCBA9876543210"
 
