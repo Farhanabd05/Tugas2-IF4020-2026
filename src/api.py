@@ -24,7 +24,7 @@ def encrypt(plaintext: str, key: str, mode: str, iv: bytes = None, counter: byte
         if counter is None: 
             raise ValueError("CTR mode requires a counter") 
         
-        ciphertext = encrypt_cfb(plaintext, key, counter)
+        ciphertext = encrypt_ctr(plaintext, key, counter)
 
     elif mode == "ecb": 
         ciphertext = encrypt_ecb(plaintext, key)
@@ -59,7 +59,7 @@ def decrypt(ciphertext: bytes, key: str, mode: str, iv: bytes = None, counter: b
         if counter is None: 
             raise ValueError("CTR mode requires a counter") 
         
-        plaintext = decrypt_cfb(ciphertext, key, counter)
+        plaintext = decrypt_ctr(ciphertext, key, counter)
 
     elif mode == "ecb": 
         plaintext = decrypt_ecb(ciphertext, key)
